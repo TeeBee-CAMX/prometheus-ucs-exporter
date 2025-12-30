@@ -56,3 +56,15 @@ pip install --user pipx
 pipx run reuse addheader --copyright "2022 Marshall Wace <opensource@mwam.com>" --license "GPL-3.0-only" *.py 
 ```
 
+## Prometheus.yml config
+
+Add the following configuration to your premetheus.yml file to start scraping.
+
+```
+  - job_name: 'UCS exporter'
+    static_configs:
+      - targets: ['ucs_exporter:3001']
+    metrics_path: /metrics
+    params:
+      domain: [ucs.domain.name]
+```
