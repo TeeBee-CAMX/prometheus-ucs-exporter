@@ -6,7 +6,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      PORT=3001
+      PORT: 3001
       PROM_UCS_USERNAME: 'foo'
       PROM_UCS_PASSWORD: 'passw0rd'
     restart: on-failure
