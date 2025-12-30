@@ -90,7 +90,12 @@ async def metrics(
     # Return a 503 Service Unavailable if the metrics haven't been scraped
     # yet for this domain to prevent drops in metrics during deployment.
     if ready_domains.get(domain, False):
-        return Response(content=generate_latest(), status_code=200)
+        return Response(
+            content=generate_latest(),
+            status_code=200,
+            media_type="text/plain; version=0.0.4",
+        )
+
     else:
         return Response(content=f"Not yet scraped {domain}...", status_code=503)
 
