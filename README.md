@@ -4,13 +4,14 @@
 
 Use metrics from the UCS API to export relevant metrics to Prometheus
 
-This repository is a fork of Drew Stinnett's original exporter at
+This repository is a fork of Marshall Wace's exporter [MarshallWace/prometheus-ucs-exporter] 
+which was in turn forked from Drew Stinnett's original exporter at
 [oit-ssi-systems/prometheus-ucs-exporter][original].
 
 Modifications made include:
-* Added production server (FastAPI)
-* Added additional metrics
-* Added Grafana dashboard
+* Rebaselined to Python 3.14.2 and Alpine 3.23
+* Updated HTTP headers to work with Prometheus 3.0
+* Fixed broken graphs in Grafana dashboard
 * Minor fixes and refactorings
 
 [original]: https://gitlab.oit.duke.edu/oit-ssi-systems/prometheus-ucs-exporter
