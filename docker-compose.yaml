@@ -1,11 +1,10 @@
 ---
-version: '2.1'
 services:
   ucs-exporter:
     build: .
     container_name: ucs_exporter
     ports:
-      - 3001:3001
+      - 3001:80
     environment:
       PROM_UCS_USERNAME: 'foo'
       PROM_UCS_PASSWORD: 'passw0rd'
