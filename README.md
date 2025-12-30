@@ -4,7 +4,7 @@
 
 Use metrics from the UCS API to export relevant metrics to Prometheus
 
-This repository is a fork of Marshall Wace's exporter [MarshallWace/prometheus-ucs-exporter] 
+This repository is a fork of Marshall Wace's exporter [MarshallWace/prometheus-ucs-exporter][original] 
 which was in turn forked from Drew Stinnett's original exporter at
 [oit-ssi-systems/prometheus-ucs-exporter][original].
 
