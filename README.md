@@ -4,7 +4,7 @@
 
 Use metrics from the UCS API to export relevant metrics to Prometheus
 
-This repository is a fork of Marshall Wace's exporter [MarshallWace/prometheus-ucs-exporter][original] 
+This repository is a fork of Marshall Wace's exporter [MarshallWace/prometheus-ucs-exporter][fork] 
 which was in turn forked from Drew Stinnett's original exporter at
 [oit-ssi-systems/prometheus-ucs-exporter][original].
 
@@ -14,6 +14,7 @@ Modifications made include:
 * Fixed broken graphs in Grafana dashboard
 * Minor fixes and refactorings
 
+[fork]: https://github.com/MarshallWace/prometheus-ucs-exporter
 [original]: https://gitlab.oit.duke.edu/oit-ssi-systems/prometheus-ucs-exporter
 
 Install the Grafana dashboard by importing the JSON file `grafana/dashboard.json`.
