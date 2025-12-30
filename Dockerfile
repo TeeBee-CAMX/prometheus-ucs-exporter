@@ -7,9 +7,9 @@ COPY ./scripts/explore.py /app/explore.py
 COPY ./ucs /app/ucs
 WORKDIR /app
 ENV DESCRIPTION="prometheus-ucs-exporter exports metrics in Prometheus format\
-from Cisco Unified Computing System Manager and is maintained by Marshall Wace."
+from Cisco Unified Computing System Manager and is maintained by TeeBee-CAMX."
 LABEL description="$DESCRIPTION" \
-      maintainer="MWAM Infra Team" \
+      maintainer="TeeBee-CAMX" \
       io.k8s.description="$DESCRIPTION"
 # create dir, group and user for easy use by non-root apps
 RUN addgroup -S appuser && \
