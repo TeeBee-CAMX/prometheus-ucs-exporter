@@ -8,7 +8,8 @@ from fastapi import BackgroundTasks, FastAPI, Query, Response
 import logging
 import sys
 import os
-from prometheus_client import Counter, Gauge, generate_latest
+from prometheus_client import Counter, Gauge, REGISTRY
+from prometheus_client.openmetrics.exposition import generate_latest, CONTENT_TYPE_LATEST
 from ucsmsdk.ucshandle import UcsHandle
 from starlette_exporter import PrometheusMiddleware
 from ucs.computecapacity import ComputeCapacity
@@ -90,14 +91,9 @@ async def metrics(
     # Return a 503 Service Unavailable if the metrics haven't been scraped
     # yet for this domain to prevent drops in metrics during deployment.
     if ready_domains.get(domain, False):
-        return Response(
-            content=generate_latest(),
-            status_code=200,
-            media_type="text/plain; version=0.0.4",
-        )
-
+        return Response(content=generate_latest(REGISTRY), status_code=200, media_type=CONTENT_TYPE_LATEST)
     else:
-        return Response(content=f"Not yet scraped {domain}...", status_code=503)
+        return Response(content=f"Not yet scraped {domain}...", status_code=503, media_type=CONTENT_TYPE_LATEST)
 
 
 def fetch_metrics(domain):
