@@ -31,7 +31,7 @@ docker build -t prometheus-ucs-exporter .
 docker run -p 3001:3001 -e PORT=3001 \
 -e PROM_UCS_USERNAME='ucs-mydomain\username' \
 -e PROM_UCS_PASSWORD='passw0rd' \
-prometheus-ucs-exporter
+ghcr.io/teebee-camx/prometheus-ucs-exporter:0.0.1
 ```
 
 Fetch metrics:
@@ -47,7 +47,7 @@ curl http://localhost:3001/metrics?domain=my-domain.example.com
 ## Usage
 
 ```
-docker pull ghcr.io/marshallwace/prometheus-ucs-exporter:0.0.2
+docker pull ghcr.io/teebee-camx/prometheus-ucs-exporter:0.0.1
 ```
 
 ## SPDX update
@@ -55,7 +55,7 @@ docker pull ghcr.io/marshallwace/prometheus-ucs-exporter:0.0.2
 ```
 pip install --user pipx
 
-pipx run reuse addheader --copyright "2022 Marshall Wace <opensource@mwam.com>" --license "GPL-3.0-only" *.py 
+pipx run reuse addheader --copyright "2025 TeeBee-CAMX" --license "GPL-3.0-only" *.py 
 ```
 
 ## Prometheus.yml config
