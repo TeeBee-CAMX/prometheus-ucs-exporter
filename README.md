@@ -31,7 +31,7 @@ docker build -t prometheus-ucs-exporter .
 docker run -p 3001:3001 -e PORT=3001 \
 -e PROM_UCS_USERNAME='ucs-mydomain\username' \
 -e PROM_UCS_PASSWORD='passw0rd' \
-ghcr.io/teebee-camx/prometheus-ucs-exporter:0.0.1
+ghcr.io/teebee-camx/prometheus-ucs-exporter:<version>
 ```
 
 Fetch metrics:
@@ -47,7 +47,7 @@ curl http://localhost:3001/metrics?domain=my-domain.example.com
 ## Usage
 
 ```
-docker pull ghcr.io/teebee-camx/prometheus-ucs-exporter:0.0.1
+docker pull ghcr.io/teebee-camx/prometheus-ucs-exporter:<version>
 ```
 
 ## SPDX update
