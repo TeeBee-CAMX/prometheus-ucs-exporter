@@ -37,73 +37,6 @@ app = FastAPI(
 
 app.add_middleware(PrometheusMiddleware)
 
-# --- OpenMetrics UNIT injection (prometheus_client doesn't emit # UNIT lines) ---
-
-_UNIT_SUFFIX_MAP = {
-    "_seconds": "seconds",
-    "_second": "seconds",
-    "_bytes": "bytes",
-    "_byte": "bytes",
-    "_celsius": "celsius",
-    "_fahrenheit": "fahrenheit",
-    "_kelvin": "kelvin",
-    "_watts": "watts",
-    "_watt": "watts",
-    "_volts": "volts",
-    "_volt": "volts",
-    "_amps": "amperes",
-    "_amp": "amperes",
-    "_amperes": "amperes",
-    "_hertz": "hertz",
-    "_hz": "hertz",
-    "_ratio": "1",
-    "_percent": "1",
-}
-
-def _infer_unit(metric_family_name: str) -> str:
-    """Infer OpenMetrics unit from common Prometheus naming suffixes.
-
-    If no known unit suffix is present, return "1" (dimensionless).
-    """
-    for suffix, unit in _UNIT_SUFFIX_MAP.items():
-        if metric_family_name.endswith(suffix):
-            return unit
-    return "1"
-
-def _inject_openmetrics_units(openmetrics_text: str) -> str:
-    """Ensure each MetricFamily has a # UNIT line (OpenMetrics 1.0 requirement)."""
-    lines = openmetrics_text.splitlines()
-    out = []
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        out.append(line)
-
-        if line.startswith("# TYPE "):
-            parts = line.split()
-            if len(parts) >= 4:
-                fam = parts[2]
-
-                # Look ahead for an existing UNIT line for this family
-                j = i + 1
-                while j < len(lines) and lines[j] == "":
-                    j += 1
-
-                has_unit = (
-                    j < len(lines)
-                    and lines[j].startswith("# UNIT ")
-                    and len(lines[j].split()) >= 4
-                    and lines[j].split()[2] == fam
-                )
-
-                if not has_unit:
-                    out.append(f"# UNIT {fam} {_infer_unit(fam)}")
-
-        i += 1
-
-    return "\n".join(out) + "\n"
-
-
 def get_required_env(env_name):
     """Look up and return an environmental variable, or fail if not found."""
     if env_name not in os.environ:
@@ -158,7 +91,7 @@ async def metrics(
     # Return a 503 Service Unavailable if the metrics haven't been scraped
     # yet for this domain to prevent drops in metrics during deployment.
     if ready_domains.get(domain, False):
-        return Response(content=_inject_openmetrics_units(generate_latest(REGISTRY).decode('utf-8', errors='replace')).encode('utf-8'), status_code=200, media_type=CONTENT_TYPE_LATEST)
+        return Response(content=generate_latest(REGISTRY), status_code=200, media_type=CONTENT_TYPE_LATEST)
     else:
         return Response(content=f"Not yet scraped {domain}...", status_code=503, media_type=CONTENT_TYPE_LATEST)
 
