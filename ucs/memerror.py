@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -8,21 +9,21 @@ from . import utils as u
 
 memory_error_labels = list(u.DEFAULT_LABELS.keys())
 
-address_parity_errors = Gauge('ucs_address_parity_errors',
+address_parity_errors = Gauge('ucs_address_parity_errors_count',
     'address_parity_errors', memory_error_labels)
-address_parity_errors_correctable = Gauge('ucs_address_parity_errors_correctable',
-    'address_parity_errors_correctable', memory_error_labels)
-address_parity_errors_un_correctable = Gauge('ucs_address_parity_errors_un_correctable',
-    'address_parity_errors_un_correctable', memory_error_labels)
-dram_write_data_correctable_crc_errors = Gauge('ucs_dram_write_data_correctable_crc_errors',
-    'dram_write_data_correctable_crc_errors', memory_error_labels)
-dram_write_data_un_correctable_crc_errors = Gauge('ucs_dram_write_data_un_correctable_crc_errors',
-    'dram_write_data_un_correctable_crc_errors', memory_error_labels)
-ecc_multibit_errors = Gauge('ucs_ecc_multibit_errors',
+address_parity_errors_correctable = Gauge('ucs_address_parity_errors_correctable_count',
+    'address_parity_errors_correctable_count', memory_error_labels)
+address_parity_errors_un_correctable = Gauge('ucs_address_parity_errors_un_correctable_count',
+    'address_parity_errors_un_correctable_count', memory_error_labels)
+dram_write_data_correctable_crc_errors = Gauge('ucs_dram_write_data_correctable_crc_errors_count',
+    'dram_write_data_correctable_crc_errors_count', memory_error_labels)
+dram_write_data_un_correctable_crc_errors = Gauge('ucs_dram_write_data_un_correctable_crc_errors_count',
+    'dram_write_data_un_correctable_crc_errors_count', memory_error_labels)
+ecc_multibit_errors = Gauge('ucs_ecc_multibit_errors_count',
     'ecc_multibit_errors', memory_error_labels)
-ecc_singlebit_errors = Gauge('ucs_ecc_singlebit_errors',
+ecc_singlebit_errors = Gauge('ucs_ecc_singlebit_errors_count',
     'ecc_singlebit_errors', memory_error_labels)
-mismatch_errors = Gauge('ucs_mismatch_errors',
+mismatch_errors = Gauge('ucs_mismatch_errors_count',
     'mismatch_errors', memory_error_labels)
 
 class MemError:
