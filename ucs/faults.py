@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -6,7 +7,7 @@
 from collections import defaultdict
 from prometheus_client import Gauge
 
-ucs_faults_total = Gauge('ucs_faults_total', 'Faults', ['domain', 'type', 'severity'])
+ucs_faults_total = Gauge('ucs_faults_count', 'Faults', ['domain', 'type', 'severity'])
 
 class Faults:
     def __init__(self, domain):
