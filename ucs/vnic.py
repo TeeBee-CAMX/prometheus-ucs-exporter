@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -6,23 +7,23 @@
 from prometheus_client import Gauge
 from . import utils as u
 
-vnic_stats_rx = Gauge('ucs_vnic_stats_rx',
+vnic_stats_rx = Gauge('ucs_vnic_rx_stats_bytes',
                       'HBA Statisitics for VNIC in Bytes Recieved',
                       list(u.DEFAULT_LABELS.keys()))
-vnic_stats_tx = Gauge('ucs_vnic_stats_tx',
+vnic_stats_tx = Gauge('ucs_vnic_tx_stats_bytes',
                       'HBA Statisitics for VNIC in Bytes Transmitted',
                       list(u.DEFAULT_LABELS.keys()))
 vnic_stats_packets_rx = Gauge(
-    'ucs_vnic_stats_packets_rx', 'HBA Statisitics for VNIC in Packets Recieved',
+    'ucs_vnic_stats_rx_packets_count', 'HBA Statisitics for VNIC in Packets Recieved',
     list(u.DEFAULT_LABELS.keys()))
 vnic_stats_packets_tx = Gauge(
-    'ucs_vnic_stats_packets_tx', 'HBA Statisitics for VNIC in Packets Transmitted',
+    'ucs_vnic_stats_tx_packets_count', 'HBA Statisitics for VNIC in Packets Transmitted',
     list(u.DEFAULT_LABELS.keys()))
 vnic_stats_errors_rx = Gauge(
-    'ucs_vnic_stats_errors_rx', 'HBA Statisitics for VNIC in Errors Recieved',
+    'ucs_vnic_stats_rx_errors_count', 'HBA Statisitics for VNIC in Errors Recieved',
     list(u.DEFAULT_LABELS.keys()))
 vnic_stats_errors_tx = Gauge(
-    'ucs_vnic_stats_errors_tx', 'HBA Statisitics for VNIC in Errors Transmitted',
+    'ucs_vnic_stats_tx_errors_count', 'HBA Statisitics for VNIC in Errors Transmitted',
     list(u.DEFAULT_LABELS.keys()))
 
 class Vnic:
