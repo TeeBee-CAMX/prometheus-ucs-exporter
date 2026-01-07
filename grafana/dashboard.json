@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 86,
+  "id": 0,
   "links": [],
   "panels": [
     {
@@ -101,7 +101,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, severity, type) (ucs_faults_total{domain=~\"${domain}\",severity=~\"critical\",type=\"management\"})",
+          "expr": "sum by (domain, severity, type) (ucs_faults_count{domain=~\"${domain}\",severity=~\"critical\",type=\"management\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{severity}} {{type}}",
           "range": true,
@@ -173,7 +173,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, severity, type) (ucs_faults_total{domain=~\"${domain}\",severity=~\"major\",type=\"management\"})",
+          "expr": "sum by (domain, severity, type) (ucs_faults_count{domain=~\"${domain}\",severity=~\"major\",type=\"management\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{severity}} {{type}}",
           "range": true,
@@ -245,7 +245,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, severity, type) (ucs_faults_total{domain=~\"${domain}\",severity=~\"minor\",type=\"management\"})",
+          "expr": "sum by (domain, severity, type) (ucs_faults_count{domain=~\"${domain}\",severity=~\"minor\",type=\"management\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{severity}} {{type}}",
           "range": true,
@@ -317,7 +317,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, severity, type) (ucs_faults_total{domain=~\"${domain}\",severity=~\"warning\",type=\"management\"})",
+          "expr": "sum by (domain, severity, type) (ucs_faults_count{domain=~\"${domain}\",severity=~\"warning\",type=\"management\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{severity}} {{type}}",
           "range": true,
@@ -419,7 +419,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (severity) (ucs_faults_total{domain=~\"${domain}\",severity=~\"critical|major|minor|warning\",type=\"management\"})",
+          "expr": "sum by (severity) (ucs_faults_count{domain=~\"${domain}\",severity=~\"critical|major|minor|warning\",type=\"management\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{severity}} {{type}}",
           "range": true,
@@ -509,11 +509,13 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(sum by (domain, class) (ucs_slots_equipped{domain=~\"${domain}\"}) / sum by (domain, class) (ucs_slots_total{domain=~\"${domain}\"})) * 100",
+          "expr": "(sum by (domain, class) (ucs_slots_equipped_count{domain=~\"${domain}\"}) / sum by (domain, class) (ucs_slots_count{domain=~\"${domain}\"})) * 100",
           "hide": false,
           "interval": "",
           "legendFormat": "{{domain}}",
+          "range": true,
           "refId": "C"
         },
         {
@@ -626,10 +628,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, class) (ucs_cpu_cores_total{domain=~\"${domain}\"})",
+          "expr": "sum by (domain, class) (ucs_cpu_cores_count{domain=~\"${domain}\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{class}} cores",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -731,10 +735,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, class) (ucs_mem_total{domain=~\"${domain}\"})",
+          "expr": "sum by (domain, class) (ucs_mem_megabytes{domain=~\"${domain}\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{class}}s total ram",
+          "range": true,
           "refId": "A"
         },
         {
@@ -847,10 +853,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, class) (ucs_servers_total{domain=~\"${domain}\"})",
+          "expr": "sum by (domain, class) (ucs_servers_count{domain=~\"${domain}\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{class}}s",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -966,10 +974,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, pc_label, pc_name) (rate(ucs_ether_stats_bytes_rx{domain=~\"${domain}\"}[10m]))",
+          "expr": "sum by (domain, pc_label, pc_name) (rate(ucs_ether_stats_rx_bytes{domain=~\"${domain}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}} {{pc_label}} {{pc_name}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1070,10 +1080,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, pc_label, pc_name) (rate(ucs_ether_stats_bytes_tx{domain=~\"${domain}\"}[10m]))",
+          "expr": "sum by (domain, pc_label, pc_name) (rate(ucs_ether_stats_tx_bytes{domain=~\"${domain}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}} {{pc_label}} {{pc_name}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1176,10 +1188,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, rack, chassis, blade) (rate(ucs_vnic_stats_packets_rx{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"}[10m]))",
+          "expr": "sum by (domain, rack, chassis, blade) (rate(ucs_vnic_stats_rx_packets_count{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}}  {{rack}} {{chassis}} {{blade}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1282,10 +1296,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, rack, chassis, blade) (rate(ucs_vnic_stats_packets_tx{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"}[10m]))",
+          "expr": "sum by (domain, rack, chassis, blade) (rate(ucs_vnic_stats_tx_packets_count{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}}  {{rack}} {{chassis}} {{blade}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1402,7 +1418,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "max by (domain, chassis, rack, blade) (max_over_time(ucs_server_temperature{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"}[10m]))",
+          "expr": "max by (domain, chassis, rack, blade) (max_over_time(ucs_server_temperature_celsius{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}} {{chassis}} {{rack}} {{blade}}",
           "range": true,
@@ -1507,10 +1523,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "max by (domain, chassis) (avg_over_time(ucs_fan_speed{domain=~\"${domain}\",chassis=~\"${chassis}\"}[10m]))",
+          "expr": "max by (domain, chassis) (avg_over_time(ucs_fan_speed_rpm{domain=~\"${domain}\",chassis=~\"${chassis}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}} {{chassis}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1583,7 +1601,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "max by (domain, chassis, rack, blade) (ucs_server_temperature{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"})",
+          "expr": "max by (domain, chassis, rack, blade) (ucs_server_temperature_celsius{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"})",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{domain}} {{chassis}} {{rack}} {{blade}}",
@@ -1702,10 +1720,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "avg by (domain, switch) (avg_over_time(ucs_cpu_load{domain=~\"${domain}\"}[10m]))",
+          "expr": "avg by (domain, switch) (avg_over_time(ucs_cpu_load_ratio{domain=~\"${domain}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}} {{switch}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1808,10 +1828,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(100 * avg by (domain, switch) (avg_over_time(ucs_kernel_mem_free{domain=~\"${domain}\"}[10m])) / avg by (domain, switch) (avg_over_time(ucs_kernel_mem_total[10m])))",
+          "expr": "(100 * avg by (domain, switch) (avg_over_time(ucs_kernel_mem_free_megabytes{domain=~\"${domain}\"}[10m])) / avg by (domain, switch) (avg_over_time(ucs_kernel_mem_total_megabytes[10m])))",
           "interval": "",
           "legendFormat": "{{domain }} {{switch}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1914,10 +1936,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "avg by (domain, switch) (avg_over_time(ucs_mem_available{domain=~\"${domain}\"}[10m]))",
+          "expr": "avg by (domain, switch) (avg_over_time(ucs_mem_available_megabytes{domain=~\"${domain}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain }} {{switch}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2020,10 +2044,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "avg by (domain, switch) (avg_over_time(ucs_mem_cached{domain=~\"${domain}\"}[10m]))",
+          "expr": "avg by (domain, switch) (avg_over_time(ucs_mem_cached_megabytes{domain=~\"${domain}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain }} {{switch}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2138,7 +2164,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, rack, chassis, blade) (ucs_address_parity_errors{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"})",
+          "expr": "sum by (domain, rack, chassis, blade) (ucs_address_parity_errors_count{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"})",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{domain}}  {{rack}} {{chassis}} {{blade}}",
@@ -2320,10 +2346,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (domain, chassis, blade) (ucs_compute_mb_input_current{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"})",
+          "expr": "sum by (domain, chassis, blade) (ucs_compute_mb_input_current_amperes{domain=~\"${domain}\",chassis=~\"${chassis}\",rack=~\"${rack}\",blade=~\"${blade}\"})",
           "interval": "",
           "legendFormat": "{{domain}} {{chassis}} {{blade}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2427,10 +2455,12 @@
             "type": "prometheus",
             "uid": "${Cluster}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "max by (domain, chassis) (max_over_time(ucs_compute_mb_consumed_power{domain=~\"${domain}\",chassis=~\"${chassis}\",blade=~\"${blade}\",rack=~\"${rack}\"}[10m]))",
+          "expr": "max by (domain, chassis) (max_over_time(ucs_compute_mb_consumed_power_watts{domain=~\"${domain}\",chassis=~\"${chassis}\",blade=~\"${blade}\",rack=~\"${rack}\"}[10m]))",
           "interval": "",
           "legendFormat": "{{domain}} {{chassis}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2531,9 +2561,7 @@
         "allValue": ".+",
         "current": {
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -2563,5 +2591,5 @@
   "timezone": "",
   "title": "Cisco UCS",
   "uid": "BXG5Mes7z",
-  "version": 17
+  "version": 20
 }
