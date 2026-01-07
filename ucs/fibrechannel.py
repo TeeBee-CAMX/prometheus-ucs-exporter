@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -7,13 +8,13 @@ from prometheus_client import Gauge
 from . import utils as u
 
 fc_labels = ('domain', 'pc_name', 'pc_label')
-ucs_fc_bytes_rx = Gauge('ucs_fc_bytes_rx', 'Fibre Channel bytes received',
+ucs_fc_bytes_rx = Gauge('ucs_fc_rx_bytes', 'Fibre Channel bytes received',
     fc_labels)
-ucs_fc_bytes_tx = Gauge('ucs_fc_bytes_tx', 'Fibre Channel bytes transmitted',
+ucs_fc_bytes_tx = Gauge('ucs_fc_tx_bytes', 'Fibre Channel bytes transmitted',
     fc_labels)
-ucs_fc_packets_rx = Gauge('ucs_fc_packets_rx', 'Fibre Channel packets received',
+ucs_fc_packets_rx = Gauge('ucs_fc_rx_packets_count', 'Fibre Channel packets received',
     fc_labels)
-ucs_fc_packets_tx = Gauge('ucs_fc_packets_tx', 'Fibre Channel packets transmitted',
+ucs_fc_packets_tx = Gauge('ucs_fc_tx_packets_count', 'Fibre Channel packets transmitted',
     fc_labels)
 
 class FibreChannel:
