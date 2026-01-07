@@ -13,6 +13,7 @@ Modifications made include:
 * Updated HTTP headers to work with Prometheus 3.0
 * Fixed broken graphs in Grafana dashboard
 * Minor fixes and refactorings
+* Updated all fileds and http headers to become Openmetrics 1.0 compliant. 
 
 [fork]: https://github.com/MarshallWace/prometheus-ucs-exporter
 [original]: https://gitlab.oit.duke.edu/oit-ssi-systems/prometheus-ucs-exporter
