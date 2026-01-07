@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -6,7 +7,7 @@
 from prometheus_client import Gauge
 from . import utils as u
 
-processor_env_stats = Gauge('ucs_server_temperature',
+processor_env_stats = Gauge('ucs_server_temperature_celsius',
                             'Processor Environmental Stats in Celsius',
                             list(u.DEFAULT_LABELS.keys()) + ['cpu'])
 
