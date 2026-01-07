@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -6,13 +7,13 @@
 from prometheus_client import Gauge
 from . import utils as u
 
-compute_mb_consumed_power = Gauge('ucs_compute_mb_consumed_power',
+compute_mb_consumed_power = Gauge('ucs_compute_mb_consumed_power_watts',
                                   'Power consumed by compute MB',
                                   list(u.DEFAULT_LABELS.keys()))
-compute_mb_input_current = Gauge('ucs_compute_mb_input_current',
+compute_mb_input_current = Gauge('ucs_compute_mb_input_current_amperes',
                                  'Input current to compute MB',
                                  list(u.DEFAULT_LABELS.keys()))
-compute_mb_input_voltage = Gauge('ucs_compute_mb_input_voltage',
+compute_mb_input_voltage = Gauge('ucs_compute_mb_input_voltage_volts',
                                  'Input voltage to compute MB',
                                  list(u.DEFAULT_LABELS.keys()))
 
