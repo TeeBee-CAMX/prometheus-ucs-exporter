@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -6,7 +7,7 @@
 from prometheus_client import Gauge
 from . import utils as u
 
-fan_speed = Gauge('ucs_fan_speed', 'Fan speed',
+fan_speed = Gauge('ucs_fan_speed_rpm', 'Fan speed',
                   ('domain', 'chassis', 'fan_module', 'fan_name'))
 
 class Fan:
