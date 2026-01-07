@@ -1,3 +1,4 @@
+# 01/2026 TeeBeeCAMX
 # SPDX-FileCopyrightText: 2022 2022 Marshall Wace <opensource@mwam.com>
 #
 # SPDX-License-Identifier: GPL-3.0-only
@@ -7,21 +8,21 @@
 from prometheus_client import Gauge
 
 default_labels = ["domain","class"]
-ucs_servers_total = Gauge('ucs_servers_total',
+ucs_servers_total = Gauge('ucs_servers_count',
     'Total servers (blade/rack)', default_labels)
-ucs_cpu_cores_total = Gauge('ucs_cpu_cores_total',
+ucs_cpu_cores_total = Gauge('ucs_cpu_cores_count',
     'Total server cpu cores', default_labels)
-ucs_cpus_total = Gauge('ucs_cpus_total',
+ucs_cpus_total = Gauge('ucs_cpus_count',
     'Total server cpus', default_labels)
-ucs_mem_available_total = Gauge('ucs_mem_available_total',
+ucs_mem_available_total = Gauge('ucs_mem_available_total_megabytes',
     'Total memory available', default_labels)
-ucs_mem_total = Gauge('ucs_mem_total',
+ucs_mem_total = Gauge('ucs_mem_megabytes',
     'Total memory', default_labels)
-ucs_slots_total = Gauge('ucs_slots_total',
+ucs_slots_total = Gauge('ucs_slots_count',
     'Total slots', default_labels)
-ucs_slots_empty = Gauge('ucs_slots_empty',
+ucs_slots_empty = Gauge('ucs_slots_empty_count',
     'Slots available', default_labels)
-ucs_slots_equipped = Gauge('ucs_slots_equipped',
+ucs_slots_equipped = Gauge('ucs_slots_equipped_count',
     'Slots in use', default_labels)
 class ComputeCapacity:
     def __init__(self, domain):
