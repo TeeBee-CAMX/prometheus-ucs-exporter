@@ -9,7 +9,7 @@ which was in turn forked from Drew Stinnett's original exporter at
 [oit-ssi-systems/prometheus-ucs-exporter][original].
 
 Modifications made include:
-* Rebaselined to Python 3.14.2 and Alpine 3.23
+* Rebaselined to Python 3.14.4 and Alpine 3.23
 * Updated HTTP headers to work with Prometheus 3.0
 * Fixed broken graphs in Grafana dashboard
 * Minor fixes and refactorings
